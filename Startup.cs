@@ -52,7 +52,7 @@ namespace dotnet_core_api_example
 			app.UseCors("CorsPolicy");
 
 			//Run our own logic instead of MVC
-			/*app.Run(async context =>
+			app.Run(async context =>
 			{
 				
 				var path = context.Request.Path.ToString();
@@ -66,7 +66,7 @@ namespace dotnet_core_api_example
 				context.Response.ContentType = "application/json";
 				context.Response.ContentLength = res.Length;
 				await context.Response.WriteAsync(res);
-			});*/
+			});
 
            app.UseMvc();
 
