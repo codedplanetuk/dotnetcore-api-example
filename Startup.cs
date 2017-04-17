@@ -52,21 +52,21 @@ namespace dotnet_core_api_example
 			app.UseCors("CorsPolicy");
 
 			//Run our own logic instead of MVC
-			app.Run(async context =>
-			{
+			//app.Run(async context =>
+			//{
 				
-				var path = context.Request.Path.ToString();
+			//	var path = context.Request.Path.ToString();
 
-				var methodType = context.Request.Method;
-				Console.WriteLine("In Middleware, Path is: " + path + ", Method is:" + methodType);
-				context.Items["ReturnObj"] = new { Path = path, Method = methodType };
+			//	var methodType = context.Request.Method;
+			//	Console.WriteLine("In Middleware, Path is: " + path + ", Method is:" + methodType);
+			//	context.Items["ReturnObj"] = new { Path = path, Method = methodType };
 
-				var res = JsonConvert.SerializeObject(context.Items["ReturnObj"]);
-				context.Response.StatusCode = StatusCodes.Status200OK;
-				context.Response.ContentType = "application/json";
-				context.Response.ContentLength = res.Length;
-				await context.Response.WriteAsync(res);
-			});
+			//	var res = JsonConvert.SerializeObject(context.Items["ReturnObj"]);
+			//	context.Response.StatusCode = StatusCodes.Status200OK;
+			//	context.Response.ContentType = "application/json";
+			//	context.Response.ContentLength = res.Length;
+			//	await context.Response.WriteAsync(res);
+			//});
 
            app.UseMvc();
 
