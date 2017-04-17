@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using dotnet_core_api_example.Repositories;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace dotnet_core_api_example.Controllers
 {
@@ -13,7 +16,13 @@ namespace dotnet_core_api_example.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+			IMongoRepository mongo = new MongoRepository();
+			var mClient = mongo.MongoClient.GetDatabase("syncpizza");
+			var coll = mClient.GetCollection<BsonDocument>("pizzapoll");
+			var res = coll.Find(new BsonDocument()).First();
+			var dt = res["dateLogged"].AsString;
+
+            return new string[] { "value1", dt };
         }
 
         // GET api/values/5
