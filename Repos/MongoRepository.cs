@@ -20,8 +20,8 @@ namespace dotnet_core_api_example.Repositories
 			{
 				if (_mongoClient == null)
 				{
-					_mongoClient = new MongoClient("mongodb://10.0.1.80:27017");
-					//_mongoClient = new MongoClient("mongodb://localhost:27017");
+					//_mongoClient = new MongoClient("mongodb://10.0.1.80:27017");
+					_mongoClient = new MongoClient("mongodb://localhost:27017");
 					return _mongoClient;
 				}
 				else

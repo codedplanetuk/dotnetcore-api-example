@@ -14,6 +14,7 @@ namespace dotnet_core_api_example
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+				.UseUrls("http://*:5000")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 //.UseIISIntegration()
                 .UseStartup<Startup>()
